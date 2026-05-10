@@ -1,5 +1,9 @@
-<!-- BEGIN:nextjs-agent-rules -->
-# This is NOT the Next.js you know
+# AGENTS.md
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
-<!-- END:nextjs-agent-rules -->
+> Instructions for AI agents working on Kanpo.
+
+**The source of truth for this project is [`CLAUDE.md`](./CLAUDE.md).**
+
+Please read and follow all rules, conventions, and decisions documented there. This file exists only as an entry point for tools that expect `AGENTS.md` (Codex, other agents).
+
+Don't duplicate information here. Any update goes in `CLAUDE.md`.
