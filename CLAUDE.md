@@ -191,6 +191,101 @@ exercises.forEach((e, i) => ...)
 
 ---
 
+---
+
+## 🏗️ Component architecture
+
+The UI should be as dumb as possible. Logic, data, and side effects live elsewhere — components only render.
+
+### A-1. Separate UI from logic
+
+Components don't compute, fetch, or transform — they orchestrate. Move every piece of logic to its proper place:
+
+| What | Where |
+| --- | --- |
+| Pure functions, calculations, transforms | `methods.ts` |
+| Strings, labels, copy | `constants.ts` |
+| Stateful logic, side effects, data fetching | Custom hook in `hooks/` |
+| Server-side queries | Server Component or `lib/` server function |
+
+```tsx
+// ❌ Bad — logic mixed with UI
+export const MatchCard = ({ match }) => {
+  const available = match.totalSlots - match.enrolled
+  const isFull = available === 0
+  const formattedTime = new Date(match.startsAt).toLocaleTimeString('es-VE')
+
+  return (...)
+}
+
+// ✅ Good — UI only orchestrates
+import { calculateAvailableSlots, formatMatchTime, isMatchFull } from './methods'
+
+export const MatchCard = ({ match }) => {
+  const available = calculateAvailableSlots(match.totalSlots, match.enrolled)
+  const isFull = isMatchFull(match)
+  const time = formatMatchTime(match.startsAt)
+
+  return (...)
+}
+```
+
+### A-2. Extract custom hooks for stateful logic
+
+Any time a component has more than ~2 `useState` / `useEffect` calls related to the same concern, extract a custom hook into `src/hooks/`.
+
+```tsx
+// ❌ Bad — fetching, state, and rendering tangled
+export const MatchDetail = ({ id }) => {
+  const [match, setMatch] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    fetchMatch(id)
+      .then(setMatch)
+      .catch(setError)
+      .finally(() => setIsLoading(false))
+  }, [id])
+
+  return (...)
+}
+
+// ✅ Good — logic in a hook, UI clean
+// hooks/useMatch.ts
+export const useMatch = (id: string) => {
+  const [match, setMatch] = useState<Match | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState<Error | null>(null)
+
+  useEffect(() => {
+    fetchMatch(id)
+      .then(setMatch)
+      .catch(setError)
+      .finally(() => setIsLoading(false))
+  }, [id])
+
+  return { match, isLoading, error }
+}
+
+// MatchDetail.tsx
+export const MatchDetail = ({ id }) => {
+  const { match, isLoading, error } = useMatch(id)
+  return (...)
+}
+```
+
+### A-3. Split components when they grow
+
+A component is too big when:
+- It has more than ~150 lines
+- It renders multiple distinct sections (header + body + footer with their own logic)
+- You're scrolling to find the JSX
+
+Split by responsibility, not by line count. Each subcomponent should have a clear, single purpose.
+
+---
+
 ## 🔤 TypeScript rules (pragmatic — owner is still learning TS)
 
 The owner is learning TypeScript. Keep types **simple and useful**. Don't show off advanced TS unless it genuinely helps.
