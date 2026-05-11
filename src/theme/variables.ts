@@ -4,7 +4,7 @@ export const colors = {
   ink: '#0F1410',
   emerald: '#0F8A5F',
   gold: '#C9A24A',
-
+  error: '#EE2737',
   // Soporte
   textMuted: '#6B6B66',
   border: '#E5E0D5',
