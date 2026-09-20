@@ -1,0 +1,26 @@
+/* Fonts */
+$kanpo-font-sans:
+  'Inter Tight Variable',
+  system-ui,
+  -apple-system,
+  sans-serif;
+$kanpo-font-mono: 'JetBrains Mono Variable', ui-monospace, 'SF Mono', monospace;
+$kanpo-font-serif: 'Instrument Serif', Georgia, serif;
+
+/* Sizes */
+$size-xs: 0.625rem; //10px
+$size-sm: 0.75rem; //12px
+$size-base: 1rem; //16px
+$size-md: 1.25rem; //20px
+$size-lg: 1.5rem; //24px
+$size-xl: 1.75rem; //28px
+$size-2xl: 2rem; //32px
+
+/* Weights */
+$weight-light: 300;
+$weight-normal: 400;
+$weight-medium: 500;
+$weight-semibold: 600;
+$weight-bold: 700;
+$weight-extrabold: 800;
+$weight-black: 900;
