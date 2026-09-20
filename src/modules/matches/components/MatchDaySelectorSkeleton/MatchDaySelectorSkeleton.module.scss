@@ -1,0 +1,10 @@
+.match-day-selector-skeleton {
+  display: flex;
+  gap: $spacing-xs;
+  margin-bottom: $spacing-lg;
+
+  &__item {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+}

@@ -1,0 +1,23 @@
+.match-card-skeleton {
+  &__header,
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-md;
+  }
+
+  &__header {
+    align-items: flex-start;
+  }
+
+  &__column {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+
+    &--end {
+      align-items: flex-end;
+    }
+  }
+}

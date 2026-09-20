@@ -1,0 +1,54 @@
+.day-pill {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-xxs;
+  min-width: 0;
+  min-height: 62px;
+  padding: $spacing-xs 0;
+  border: 1px solid $kanpo-sand;
+  border-radius: $radius-md;
+  background-color: $kanpo-ivory;
+  color: $kanpo-forest-black;
+
+  &:focus-visible {
+    outline: 2px solid $kanpo-grass;
+    outline-offset: 2px;
+  }
+
+  &__number {
+    font-size: $size-base;
+    font-weight: $weight-bold;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+
+  &__weekday {
+    @include mono-label;
+
+    color: inherit;
+  }
+
+  &__indicator {
+    width: $spacing-xxs;
+    height: $spacing-xxs;
+    border-radius: $radius-full;
+    background-color: transparent;
+
+    &--visible {
+      background-color: $kanpo-grass;
+    }
+  }
+
+  &--selected {
+    border-color: $kanpo-forest-black;
+    background-color: $kanpo-forest-black;
+    color: $kanpo-cream;
+
+    .day-pill__indicator--visible {
+      background-color: $kanpo-ochre;
+    }
+  }
+}

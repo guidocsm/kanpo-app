@@ -1,0 +1,28 @@
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+
+  &__mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: $radius-sm;
+    background-color: $kanpo-forest-black;
+    color: $kanpo-cream;
+    font-size: $size-sm;
+    font-weight: $weight-bold;
+  }
+
+  &__name {
+    font-size: $size-md;
+    font-weight: $weight-bold;
+    letter-spacing: -0.01em;
+  }
+
+  &__dot {
+    color: $kanpo-moss-gray;
+  }
+}

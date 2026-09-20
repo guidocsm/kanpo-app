@@ -1,0 +1,16 @@
+.card {
+  padding: $spacing-md;
+  border-radius: $radius-lg;
+
+  &--light {
+    border: 1px solid $kanpo-sand;
+    background-color: $kanpo-ivory;
+    color: $kanpo-forest-black;
+  }
+
+  &--dark {
+    border: 1px solid $kanpo-forest-black;
+    background-color: $kanpo-forest-black;
+    color: $kanpo-cream;
+  }
+}

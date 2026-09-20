@@ -1,0 +1,10 @@
+.feed {
+  min-height: 100dvh;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: calc(env(safe-area-inset-top) + $spacing-lg) $spacing-md calc(env(safe-area-inset-bottom) + $spacing-lg);
+
+  &__top-bar {
+    margin-bottom: $spacing-lg;
+  }
+}

@@ -1,5 +1,35 @@
 {
+  "COMMON": {
+    "BRAND": "kanpo"
+  },
   "FEED": {
-    "TITLE": "Feed"
+    "WEEK_LABEL": "Semana {{week}} · {{month}} {{year}}",
+    "GREETING": "Buen día,<br/>{{name}} — <accent>a jugar.</accent>",
+    "FILTER": "Filtrar ↗"
+  },
+  "MATCHES": {
+    "DAY_SELECTOR_LABEL": "Días de la semana",
+    "LIST": {
+      "SUMMARY_one": "{{day}} · {{count}} partido",
+      "SUMMARY_other": "{{day}} · {{count}} partidos"
+    },
+    "CARD": {
+      "NEXT_MATCH": "Tu próximo partido",
+      "TODAY": "Hoy",
+      "TOMORROW": "Mañana",
+      "DURATION_MINUTES": "{{minutes}} min",
+      "FULL": "Lleno",
+      "SPOTS": "{{enrolled}} / {{capacity}}"
+    },
+    "EMPTY": {
+      "TITLE": "No hay partidos programados",
+      "DESCRIPTION": "Todavía nadie ha creado un partido para este día. Probá otra fecha o activá las notificaciones para enterarte primero.",
+      "NOTIFY_BUTTON": "Notificarme de partidos nuevos"
+    },
+    "ERROR": {
+      "TITLE": "No pudimos cargar los partidos",
+      "DESCRIPTION": "Revisá tu conexión e intentá de nuevo.",
+      "RETRY_BUTTON": "Reintentar"
+    }
   }
 }

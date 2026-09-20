@@ -1,0 +1,7 @@
+.match-list-header-skeleton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-md;
+  min-height: 44px;
+}

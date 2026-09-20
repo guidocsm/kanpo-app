@@ -1,0 +1,19 @@
+@use 'colors' as *;
+@use 'typography' as *;
+
+/* Etiquetas y metadatos: mono en mayúsculas con tracking amplio */
+@mixin mono-label {
+  font-family: $kanpo-font-mono;
+  font-size: $size-xs;
+  font-weight: $weight-medium;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $kanpo-moss-gray;
+}
+
+/* Acento editorial: serif itálica, solo para palabras sueltas */
+@mixin serif-italic {
+  font-family: $kanpo-font-serif;
+  font-style: italic;
+  font-weight: $weight-normal;
+}

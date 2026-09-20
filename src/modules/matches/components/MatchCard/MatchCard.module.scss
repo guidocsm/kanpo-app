@@ -1,0 +1,128 @@
+.match-card {
+  &__badge {
+    margin-bottom: $spacing-sm;
+  }
+
+  &__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: $spacing-md;
+  }
+
+  &__time {
+    font-size: $size-xl;
+    font-weight: $weight-bold;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+
+  &__duration {
+    @include mono-label;
+
+    margin-top: $spacing-xs;
+  }
+
+  &__info {
+    min-width: 0;
+    text-align: right;
+  }
+
+  &__title {
+    overflow: hidden;
+    font-size: $size-base;
+    font-weight: $weight-bold;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__location {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: $spacing-xxs;
+    margin-top: $spacing-xxs;
+    font-size: $size-sm;
+    color: $kanpo-moss-gray;
+  }
+
+  &__location-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-sm;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+  }
+
+  &__spots {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-xxs;
+    font-size: $size-sm;
+    font-variant-numeric: tabular-nums;
+    color: $kanpo-moss-gray;
+    white-space: nowrap;
+  }
+
+  &__spots-dot {
+    width: $spacing-xs;
+    height: $spacing-xs;
+    border-radius: $radius-full;
+    background-color: $kanpo-grass;
+
+    &--featured {
+      background-color: $kanpo-ochre;
+    }
+
+    &--full {
+      background-color: $kanpo-clay-red;
+    }
+  }
+
+  &__price {
+    font-size: $size-base;
+    font-weight: $weight-bold;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+
+    &--accent {
+      color: $kanpo-grass;
+    }
+
+    &--muted {
+      color: $kanpo-moss-gray;
+    }
+
+    &--featured {
+      font-size: $size-md;
+      color: $kanpo-cream;
+    }
+  }
+
+  &--featured {
+    .match-card__time {
+      font-size: $size-2xl;
+    }
+
+    .match-card__title {
+      font-size: $size-base;
+    }
+
+    .match-card__duration,
+    .match-card__location,
+    .match-card__spots {
+      color: $kanpo-sage-gray;
+    }
+  }
+}

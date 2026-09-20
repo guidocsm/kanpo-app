@@ -1,0 +1,12 @@
+.feed-greeting-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-lg;
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+  }
+}

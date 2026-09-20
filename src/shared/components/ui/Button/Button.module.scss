@@ -1,0 +1,27 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-xs;
+  min-height: 48px;
+  padding: $spacing-sm $spacing-lg;
+  border-radius: $radius-md;
+  font-size: $size-base;
+  font-weight: $weight-semibold;
+  text-align: center;
+
+  &--secondary {
+    border: 1px solid $kanpo-sand;
+    background-color: $kanpo-ivory;
+    color: $kanpo-forest-black;
+
+    &:hover {
+      background-color: $kanpo-sand;
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid $kanpo-grass;
+    outline-offset: 2px;
+  }
+}

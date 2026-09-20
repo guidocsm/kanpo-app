@@ -1,0 +1,18 @@
+.chip {
+  @include mono-label;
+
+  display: inline-flex;
+  align-items: center;
+  padding: $spacing-xxs $spacing-xs;
+  border: 1px solid $kanpo-sand;
+  border-radius: $radius-full;
+  background-color: $kanpo-sand;
+  color: $kanpo-forest-black;
+  white-space: nowrap;
+
+  &--on-dark {
+    border-color: rgba($kanpo-cream, 0.14);
+    background-color: rgba($kanpo-cream, 0.14);
+    color: $kanpo-cream;
+  }
+}

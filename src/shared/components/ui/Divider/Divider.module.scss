@@ -1,0 +1,13 @@
+.divider {
+  height: 1px;
+  margin: $spacing-md 0;
+  border: 0;
+
+  &--light {
+    background-color: $kanpo-sand;
+  }
+
+  &--dark {
+    background-color: rgba($kanpo-cream, 0.14);
+  }
+}

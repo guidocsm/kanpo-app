@@ -1,0 +1,27 @@
+.badge {
+  @include mono-label;
+
+  display: inline-flex;
+  align-items: center;
+  border-radius: $radius-full;
+  font-weight: $weight-bold;
+  white-space: nowrap;
+
+  &--md {
+    padding: $spacing-xxs $spacing-sm;
+  }
+
+  &--sm {
+    padding: 2px $spacing-xs;
+  }
+
+  &--highlight {
+    background-color: $kanpo-ochre;
+    color: $kanpo-forest-black;
+  }
+
+  &--danger {
+    background-color: $kanpo-clay-red-light;
+    color: $kanpo-clay-red;
+  }
+}
