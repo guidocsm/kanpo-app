@@ -3,6 +3,7 @@
 
   display: inline-flex;
   align-items: center;
+  gap: $spacing-xxs;
   border-radius: $radius-full;
   font-weight: $weight-bold;
   white-space: nowrap;
@@ -23,5 +24,11 @@
   &--danger {
     background-color: $kanpo-clay-red-light;
     color: $kanpo-clay-red;
+  }
+
+  &--warning {
+    @include warning-text;
+
+    background-color: $kanpo-amber-light;
   }
 }

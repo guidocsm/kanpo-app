@@ -1,0 +1,25 @@
+.match-title-block {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: $spacing-md;
+
+  &__text {
+    min-width: 0;
+  }
+
+  &__title {
+    margin-bottom: $spacing-xs;
+    font-size: $size-lg;
+    font-weight: $weight-bold;
+    letter-spacing: -0.01em;
+  }
+
+  &__venue {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xxs;
+    font-size: $size-sm;
+    color: $kanpo-moss-gray;
+  }
+}

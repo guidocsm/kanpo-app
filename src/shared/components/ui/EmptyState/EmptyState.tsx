@@ -6,7 +6,7 @@ import styles from './EmptyState.module.scss'
 interface EmptyStateProps {
   icon: IconName
   title: string
-  description: string
+  description?: string
   actionLabel?: string
   actionIcon?: IconName
   onAction?: () => void
@@ -24,7 +24,7 @@ export function EmptyState({ icon, title, description, actionLabel, actionIcon, 
         />
       </div>
       <h2 className={styles['empty-state__title']}>{title}</h2>
-      <p className={styles['empty-state__description']}>{description}</p>
+      {description && <p className={styles['empty-state__description']}>{description}</p>}
       {actionLabel && (
         <Button
           leadingIcon={actionIcon}

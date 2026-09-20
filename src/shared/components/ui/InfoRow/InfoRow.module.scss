@@ -1,0 +1,24 @@
+.info-row {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-sm 0;
+  border-bottom: 1px solid $kanpo-sand;
+
+  &__leading {
+    display: inline-flex;
+    flex-shrink: 0;
+    color: $kanpo-moss-gray;
+  }
+
+  &__content {
+    flex: 1 1 0;
+    min-width: 0;
+    font-size: $size-base;
+  }
+
+  &__trailing {
+    display: inline-flex;
+    flex-shrink: 0;
+  }
+}

@@ -5,8 +5,17 @@ export const DATE_FORMAT = {
   DAY_LABEL: 'EEEE d MMMM',
   WEEKDAY_SHORT: 'EEE',
   DAY_NUMBER: 'd',
-  MONTH_SHORT: 'MMM'
+  MONTH_SHORT: 'MMM',
+  LONG_DAY_LABEL: "EEEE d 'de' MMMM",
+  TIME_12H: 'hh:mm'
 } as const
+
+export const MERIDIEM = {
+  AM: 'am',
+  PM: 'pm'
+} as const
+
+export const TIME_RANGE_SEPARATOR = ' – '
 
 export const RELATIVE_DAY = {
   TODAY: 'TODAY',

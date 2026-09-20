@@ -1,0 +1,47 @@
+.tabs {
+  &__list {
+    display: flex;
+    gap: $spacing-lg;
+    overflow-x: auto;
+    border-bottom: 1px solid $kanpo-sand;
+  }
+
+  &__trigger {
+    @include mono-label;
+
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    gap: $spacing-xs;
+    min-height: 44px;
+    margin-bottom: -1px;
+    padding: 0;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    background: none;
+    white-space: nowrap;
+
+    &[data-state='active'] {
+      border-bottom-color: $kanpo-grass;
+      color: $kanpo-forest-black;
+      font-weight: $weight-bold;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $kanpo-grass;
+      outline-offset: 2px;
+    }
+  }
+
+  &__count {
+    color: $kanpo-sage-gray;
+    letter-spacing: 0.04em;
+  }
+
+  &__content {
+    &:focus-visible {
+      outline: 2px solid $kanpo-grass;
+      outline-offset: 2px;
+    }
+  }
+}

@@ -3,13 +3,22 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 26px;
-  height: 26px;
   border-radius: $radius-full;
   background: linear-gradient(135deg, $kanpo-ochre, $kanpo-amber);
   color: $kanpo-forest-black;
-  font-size: $size-xs;
   font-weight: $weight-bold;
   letter-spacing: 0.02em;
   text-transform: uppercase;
+
+  &--sm {
+    width: 26px;
+    height: 26px;
+    font-size: $size-xs;
+  }
+
+  &--lg {
+    width: 44px;
+    height: 44px;
+    font-size: $size-sm;
+  }
 }

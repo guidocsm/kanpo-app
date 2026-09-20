@@ -1,0 +1,18 @@
+.text-button {
+  @include mono-label;
+
+  min-height: 44px;
+  padding: 0 $spacing-xs;
+  border: 0;
+  background: none;
+  text-align: center;
+
+  &--accent {
+    color: $kanpo-grass;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $kanpo-grass;
+    outline-offset: 2px;
+  }
+}

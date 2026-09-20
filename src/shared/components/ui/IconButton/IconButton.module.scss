@@ -1,0 +1,23 @@
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid $kanpo-sand;
+  border-radius: $radius-full;
+  background-color: $kanpo-ivory;
+  color: $kanpo-forest-black;
+  -webkit-tap-highlight-color: transparent;
+
+  &:active {
+    background-color: $kanpo-sand;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $kanpo-grass;
+    outline-offset: 2px;
+  }
+}

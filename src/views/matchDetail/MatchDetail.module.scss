@@ -1,0 +1,15 @@
+.match-detail {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  min-height: 100dvh;
+  max-width: 480px;
+  margin: 0 auto;
+  // El espacio inferior deja libre la barra de acción fija (ActionBar).
+  padding: calc(env(safe-area-inset-top) + $spacing-lg) $spacing-md calc(env(safe-area-inset-bottom) + #{$spacing-xxl * 4});
+
+  &__specs {
+    padding-bottom: $spacing-md;
+    border-bottom: 1px solid $kanpo-sand;
+  }
+}

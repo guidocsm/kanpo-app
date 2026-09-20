@@ -4,7 +4,7 @@ import styles from './Badge.module.scss'
 
 interface BadgeProps {
   children: ReactNode
-  tone: 'highlight' | 'danger'
+  tone: 'highlight' | 'danger' | 'warning'
   size?: 'md' | 'sm'
 }
 

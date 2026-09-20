@@ -1,0 +1,13 @@
+.match-enroll-bar {
+  &__notice {
+    @include mono-label;
+    @include warning-text;
+
+    text-align: center;
+  }
+
+  &__waitlist {
+    display: flex;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,30 @@
+.stat-row {
+  display: flex;
+  margin: 0;
+
+  &__item {
+    flex: 1 1 0;
+    min-width: 0;
+
+    & + & {
+      padding-left: $spacing-md;
+      border-left: 1px solid $kanpo-sand;
+    }
+
+    &:not(:last-child) {
+      padding-right: $spacing-md;
+    }
+  }
+
+  &__label {
+    @include mono-label;
+
+    margin-bottom: $spacing-xs;
+  }
+
+  &__value {
+    margin: 0;
+    font-size: $size-base;
+    font-weight: $weight-semibold;
+  }
+}

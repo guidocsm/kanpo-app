@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use 'colors' as *;
 @use 'typography' as *;
 
@@ -16,4 +17,9 @@
   font-family: $kanpo-font-serif;
   font-style: italic;
   font-weight: $weight-normal;
+}
+
+/* Texto de aviso (pocas plazas): $kanpo-amber oscurecido para cumplir contraste AA sobre crema y $kanpo-amber-light */
+@mixin warning-text {
+  color: color.scale($kanpo-amber, $lightness: -45%);
 }

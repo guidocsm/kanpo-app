@@ -1,6 +1,11 @@
 {
   "COMMON": {
-    "BRAND": "kanpo"
+    "BRAND": "kanpo",
+    "NOT_FOUND": {
+      "TITLE": "No encontramos esta página",
+      "DESCRIPTION": "El enlace puede estar roto o el partido ya no existe.",
+      "BACK_TO_FEED_BUTTON": "Ver partidos"
+    }
   },
   "FEED": {
     "WEEK_LABEL": "Semana {{week}} · {{month}} {{year}}",
@@ -30,6 +35,59 @@
       "TITLE": "No pudimos cargar los partidos",
       "DESCRIPTION": "Revisá tu conexión e intentá de nuevo.",
       "RETRY_BUTTON": "Reintentar"
+    },
+    "DETAIL": {
+      "LOADING_LABEL": "Cargando partido",
+      "HEADER": {
+        "CODE": "Partido · #{{code}}",
+        "BACK_LABEL": "Volver",
+        "BOOKMARK_LABEL": "Guardar partido",
+        "SHARE_LABEL": "Compartir partido"
+      },
+      "VENUE_LABEL": "{{name}}, {{city}}",
+      "SPECS": {
+        "FORMAT": "Formato",
+        "SURFACE": "Cancha",
+        "LEVEL": "Nivel",
+        "FORMAT_VALUE": "{{format}} · {{minutes}} min"
+      },
+      "SURFACE": {
+        "SYNTHETIC": "Sintética"
+      },
+      "LEVEL": {
+        "MIXED": "Mixto"
+      },
+      "AVAILABILITY": {
+        "FEW_SLOTS_BADGE_one": "¡Queda {{count}}!",
+        "FEW_SLOTS_BADGE_other": "¡Quedan {{count}}!",
+        "FULL_BADGE": "Completo"
+      },
+      "TABS": {
+        "LABEL": "Secciones del partido",
+        "INFO": "Información",
+        "PARTICIPANTS": "Participantes",
+        "RULES": "Reglas"
+      },
+      "INFO": {
+        "ORGANIZER_ROLE_one": "Organizador · {{count}} partido",
+        "ORGANIZER_ROLE_other": "Organizador · {{count}} partidos",
+        "NOTE_LABEL": "Nota del organizador",
+        "LOCATION": "{{venue}}, {{city}} — {{field}}",
+        "SCHEDULE": "{{day}} · {{timeRange}}"
+      },
+      "EMPTY_TABS": {
+        "PARTICIPANTS": "Aún no hay participantes confirmados",
+        "RULES": "El organizador todavía no publicó las reglas"
+      },
+      "CTA": {
+        "ENROLL": "Apuntarme al partido",
+        "ENROLL_HINT": "Pago 1 clic · USD",
+        "FEW_SLOTS_NOTICE_one": "Solo queda {{count}} plaza",
+        "FEW_SLOTS_NOTICE_other": "Solo quedan {{count}} plazas",
+        "FULL_LABEL": "Partido completo",
+        "FULL_HINT": "Cupo completo",
+        "WAITLIST": "Anotarme en la lista de espera →"
+      }
     }
   }
 }

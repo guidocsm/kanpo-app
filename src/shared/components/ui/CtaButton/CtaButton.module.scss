@@ -1,0 +1,73 @@
+.cta-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-md;
+  width: 100%;
+  min-height: 56px;
+  padding: $spacing-xs $spacing-xs $spacing-xs $spacing-lg;
+  border: 0;
+  border-radius: $radius-lg;
+  background-color: $kanpo-forest-black;
+  color: $kanpo-cream;
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+
+  &:active:not(:disabled) {
+    background-color: $kanpo-forest-dark;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $kanpo-grass;
+    outline-offset: 2px;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xxs;
+    min-width: 0;
+  }
+
+  &__label {
+    font-size: $size-base;
+    font-weight: $weight-bold;
+  }
+
+  &__sublabel {
+    @include mono-label;
+
+    color: $kanpo-sage-gray;
+  }
+
+  &__chip {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    gap: $spacing-xs;
+    min-height: 44px;
+    padding: 0 $spacing-md;
+    border-radius: $radius-md;
+    background-color: $kanpo-grass;
+    color: $kanpo-white;
+    font-size: $size-base;
+    font-weight: $weight-bold;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  &--disabled {
+    background-color: $kanpo-sand;
+    color: $kanpo-moss-gray;
+    cursor: not-allowed;
+
+    .cta-button__sublabel {
+      color: $kanpo-moss-gray;
+    }
+
+    .cta-button__chip {
+      background-color: $kanpo-moss-gray;
+      color: $kanpo-cream;
+    }
+  }
+}
