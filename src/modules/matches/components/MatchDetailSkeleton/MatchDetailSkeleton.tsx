@@ -7,7 +7,9 @@ import styles from './MatchDetailSkeleton.module.scss'
 const ICON_BUTTON_SKELETON_SIZE = 44
 const HERO_SKELETON_HEIGHT = 150
 const CTA_SKELETON_HEIGHT = 56
-const INFO_ROW_SKELETON_KEYS = [0, 1, 2]
+const SPEC_SKELETON_KEYS = [0, 1]
+const INFO_ROW_SKELETON_KEYS = [0, 1]
+const INFO_ROW_ICON_SKELETON_SIZE = 16
 
 export function MatchDetailSkeleton() {
   const { t } = useTranslation()
@@ -24,10 +26,6 @@ export function MatchDetailSkeleton() {
           width={ICON_BUTTON_SKELETON_SIZE}
           height={ICON_BUTTON_SKELETON_SIZE}
           radius="full"
-        />
-        <Skeleton
-          width={140}
-          height={11}
         />
         <div className={styles['match-detail-skeleton__actions']}>
           <Skeleton
@@ -60,7 +58,7 @@ export function MatchDetailSkeleton() {
       </div>
 
       <div className={styles['match-detail-skeleton__specs']}>
-        {INFO_ROW_SKELETON_KEYS.map((specIndex) => (
+        {SPEC_SKELETON_KEYS.map((specIndex) => (
           <div
             key={specIndex}
             className={styles['match-detail-skeleton__spec']}
@@ -99,20 +97,14 @@ export function MatchDetailSkeleton() {
             className={styles['match-detail-skeleton__row']}
           >
             <Skeleton
-              width={ICON_BUTTON_SKELETON_SIZE}
-              height={ICON_BUTTON_SKELETON_SIZE}
+              width={INFO_ROW_ICON_SKELETON_SIZE}
+              height={INFO_ROW_ICON_SKELETON_SIZE}
               radius="full"
             />
-            <div className={styles['match-detail-skeleton__row-text']}>
-              <Skeleton
-                width="60%"
-                height={16}
-              />
-              <Skeleton
-                width="40%"
-                height={11}
-              />
-            </div>
+            <Skeleton
+              width="60%"
+              height={16}
+            />
           </div>
         ))}
       </div>

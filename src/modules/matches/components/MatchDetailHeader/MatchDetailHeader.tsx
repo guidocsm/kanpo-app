@@ -6,13 +6,12 @@ import { ICON_NAME } from '@/shared/constants/icons'
 import styles from './MatchDetailHeader.module.scss'
 
 interface MatchDetailHeaderProps {
-  code: string
   onBackClick: () => void
   onBookmarkClick: () => void
   onShareClick: () => void
 }
 
-export function MatchDetailHeader({ code, onBackClick, onBookmarkClick, onShareClick }: MatchDetailHeaderProps) {
+export function MatchDetailHeader({ onBackClick, onBookmarkClick, onShareClick }: MatchDetailHeaderProps) {
   const { t } = useTranslation()
 
   return (
@@ -24,7 +23,6 @@ export function MatchDetailHeader({ code, onBackClick, onBookmarkClick, onShareC
           onClick={onBackClick}
         />
       }
-      center={<span className={styles['match-detail-header__code']}>{t('MATCHES.DETAIL.HEADER.CODE', { code })}</span>}
       trailing={
         <div className={styles['match-detail-header__actions']}>
           <IconButton

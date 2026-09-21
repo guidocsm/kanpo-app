@@ -1,13 +1,4 @@
 .match-detail-header {
-  &__code {
-    @include mono-label;
-
-    overflow: hidden;
-    min-width: 0;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
   &__actions {
     display: flex;
     flex-shrink: 0;

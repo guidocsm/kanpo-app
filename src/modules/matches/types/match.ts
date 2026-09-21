@@ -10,11 +10,11 @@ export type MatchAvailability = (typeof MATCH_AVAILABILITY)[keyof typeof MATCH_A
 export interface Venue {
   name: VenueRow['name']
   zone: VenueRow['zone']
+  city: VenueRow['city']
 }
 
 export interface VenueDetail extends Venue {
   address: VenueRow['address']
-  city: VenueRow['city']
   photoUrl: VenueRow['photoUrl']
 }
 

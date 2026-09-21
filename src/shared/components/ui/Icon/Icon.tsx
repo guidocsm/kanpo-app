@@ -10,7 +10,6 @@ interface IconProps {
 interface IconDefinition {
   viewBox: string
   strokeWidth: number
-  isFilled?: boolean
   shapes: ReactNode
 }
 
@@ -129,25 +128,19 @@ const ICON_DEFINITIONS: Record<IconName, IconDefinition> = {
         <path d="M12 7v5l3.5 2" />
       </>
     )
-  },
-  [ICON_NAME.STAR]: {
-    viewBox: '0 0 24 24',
-    strokeWidth: 0,
-    isFilled: true,
-    shapes: <path d="M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7-5.4-4.7 7.1-.6z" />
   }
 }
 
 export function Icon({ name, size = DEFAULT_ICON_SIZE }: IconProps) {
-  const { viewBox, strokeWidth, isFilled = false, shapes } = ICON_DEFINITIONS[name]
+  const { viewBox, strokeWidth, shapes } = ICON_DEFINITIONS[name]
 
   return (
     <svg
       width={size}
       height={size}
       viewBox={viewBox}
-      fill={isFilled ? 'currentColor' : 'none'}
-      stroke={isFilled ? 'none' : 'currentColor'}
+      fill="none"
+      stroke="currentColor"
       strokeWidth={strokeWidth}
       strokeLinecap="round"
       strokeLinejoin="round"

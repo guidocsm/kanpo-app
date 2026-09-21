@@ -2,11 +2,11 @@ import { useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { MatchInfoPanel } from '@/modules/matches/components/MatchInfoPanel/MatchInfoPanel'
+import { MatchRulesPanel } from '@/modules/matches/components/MatchRulesPanel/MatchRulesPanel'
+import { MatchSlotsPanel } from '@/modules/matches/components/MatchSlotsPanel/MatchSlotsPanel'
 import { MATCH_DETAIL_TAB } from '@/modules/matches/constants'
 import type { MatchDetail } from '@/modules/matches/types/match'
-import { EmptyState } from '@/shared/components/ui/EmptyState/EmptyState'
 import { Tabs } from '@/shared/components/ui/Tabs/Tabs'
-import { ICON_NAME } from '@/shared/constants/icons'
 import { formatCountRatio } from '@/shared/utils/formatCountRatio'
 import { scrollElementToStart } from '@/shared/utils/scroll'
 
@@ -41,23 +41,18 @@ export function MatchDetailTabs({ match }: MatchDetailTabsProps) {
           {
             value: MATCH_DETAIL_TAB.PARTICIPANTS,
             label: t('MATCHES.DETAIL.TABS.PARTICIPANTS'),
-            count: formatCountRatio(match.enrolledCount, match.capacity),
+            count: formatCountRatio(match.occupiedSlots, match.totalSlots),
             content: (
-              <EmptyState
-                icon={ICON_NAME.BALL}
-                title={t('MATCHES.DETAIL.EMPTY_TABS.PARTICIPANTS')}
+              <MatchSlotsPanel
+                occupiedSlots={match.occupiedSlots}
+                totalSlots={match.totalSlots}
               />
             )
           },
           {
             value: MATCH_DETAIL_TAB.RULES,
             label: t('MATCHES.DETAIL.TABS.RULES'),
-            content: (
-              <EmptyState
-                icon={ICON_NAME.BALL}
-                title={t('MATCHES.DETAIL.EMPTY_TABS.RULES')}
-              />
-            )
+            content: <MatchRulesPanel rules={match.rules} />
           }
         ]}
       />

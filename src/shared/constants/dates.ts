@@ -19,10 +19,3 @@ export const MERIDIEM = {
 } as const
 
 export const TIME_RANGE_SEPARATOR = ' – '
-
-export const RELATIVE_DAY = {
-  TODAY: 'TODAY',
-  TOMORROW: 'TOMORROW'
-} as const
-
-export type RelativeDay = (typeof RELATIVE_DAY)[keyof typeof RELATIVE_DAY]

@@ -16,10 +16,6 @@
     }
   }
 
-  &__badge {
-    margin-bottom: $spacing-sm;
-  }
-
   &__header {
     display: flex;
     align-items: flex-start;
@@ -98,10 +94,6 @@
     border-radius: $radius-full;
     background-color: $kanpo-grass;
 
-    &--featured {
-      background-color: $kanpo-ochre;
-    }
-
     &--full {
       background-color: $kanpo-clay-red;
     }
@@ -119,27 +111,6 @@
 
     &--muted {
       color: $kanpo-moss-gray;
-    }
-
-    &--featured {
-      font-size: $size-md;
-      color: $kanpo-cream;
-    }
-  }
-
-  &--featured {
-    .match-card__time {
-      font-size: $size-2xl;
-    }
-
-    .match-card__title {
-      font-size: $size-base;
-    }
-
-    .match-card__duration,
-    .match-card__location,
-    .match-card__spots {
-      color: $kanpo-sage-gray;
     }
   }
 }

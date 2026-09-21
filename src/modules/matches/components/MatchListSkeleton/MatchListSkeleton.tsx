@@ -1,7 +1,7 @@
 import { MatchCardSkeleton } from '@/modules/matches/components/MatchCardSkeleton/MatchCardSkeleton'
 import styles from './MatchListSkeleton.module.scss'
 
-const MATCH_LIST_SKELETON_VARIANTS = ['featured', 'default', 'default'] as const
+const MATCH_LIST_SKELETON_KEYS = [0, 1, 2]
 
 export function MatchListSkeleton() {
   return (
@@ -9,11 +9,8 @@ export function MatchListSkeleton() {
       className={styles['match-list-skeleton']}
       aria-busy="true"
     >
-      {MATCH_LIST_SKELETON_VARIANTS.map((variant, skeletonIndex) => (
-        <MatchCardSkeleton
-          key={skeletonIndex}
-          variant={variant}
-        />
+      {MATCH_LIST_SKELETON_KEYS.map((skeletonIndex) => (
+        <MatchCardSkeleton key={skeletonIndex} />
       ))}
     </div>
   )

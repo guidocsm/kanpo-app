@@ -5,7 +5,7 @@ import type { Tables } from '@/shared/types/database'
 type MatchFormatColumns = Pick<Tables<'matchFormat'>, 'name' | 'totalSlots' | 'durationMin'>
 
 export interface MatchListRow extends Pick<Tables<'match'>, 'id' | 'startsAt' | 'priceAmount' | 'occupiedSlots'> {
-  venue: Pick<Tables<'venue'>, 'name' | 'zone'>
+  venue: Pick<Tables<'venue'>, 'name' | 'zone' | 'city'>
   matchFormat: MatchFormatColumns
 }
 

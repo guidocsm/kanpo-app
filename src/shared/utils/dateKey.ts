@@ -1,6 +1,6 @@
-import { addDays, format, isToday, isTomorrow, parse, startOfDay } from 'date-fns'
+import { addDays, format, parse, startOfDay } from 'date-fns'
 
-import { DATE_KEY_FORMAT, RELATIVE_DAY, type RelativeDay } from '@/shared/constants/dates'
+import { DATE_KEY_FORMAT } from '@/shared/constants/dates'
 import { APP_TZ, toAppDate, toUtcIsoString } from '@/shared/utils/appTimeZone'
 
 // Clave de día ('yyyy-MM-dd') en hora de Caracas.
@@ -28,11 +28,4 @@ export function getDateKeysRange(dateKeys: string[]): { from: string; before: st
     from: toUtcIsoString(firstDay),
     before: toUtcIsoString(addDays(lastDay, 1))
   }
-}
-
-export function getRelativeDay(date: Date): RelativeDay | null {
-  const appDate = toAppDate(date)
-  if (isToday(appDate)) return RELATIVE_DAY.TODAY
-  if (isTomorrow(appDate)) return RELATIVE_DAY.TOMORROW
-  return null
 }

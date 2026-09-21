@@ -1,0 +1,8 @@
+.match-rules-panel {
+  &__text {
+    padding: $spacing-md 0;
+    font-size: $size-base;
+    line-height: 1.55;
+    white-space: pre-line;
+  }
+}

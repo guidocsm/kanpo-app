@@ -4,11 +4,10 @@ import { getWeekLabelValues } from '@/shared/utils/formatDate'
 import styles from './FeedGreeting.module.scss'
 
 interface FeedGreetingProps {
-  firstName: string
   selectedDate: Date
 }
 
-export function FeedGreeting({ firstName, selectedDate }: FeedGreetingProps) {
+export function FeedGreeting({ selectedDate }: FeedGreetingProps) {
   const { t } = useTranslation()
 
   return (
@@ -17,8 +16,7 @@ export function FeedGreeting({ firstName, selectedDate }: FeedGreetingProps) {
       <h1 className={styles['feed-greeting__title']}>
         <Trans
           i18nKey="FEED.GREETING"
-          values={{ name: firstName }}
-          components={{ br: <br />, accent: <span className={styles['feed-greeting__accent']} /> }}
+          components={{ accent: <span className={styles['feed-greeting__accent']} /> }}
         />
       </h1>
     </div>

@@ -17,8 +17,7 @@
   }
 
   &__title,
-  &__spec,
-  &__row-text {
+  &__spec {
     display: flex;
     flex-direction: column;
     gap: $spacing-xs;
@@ -49,9 +48,5 @@
     justify-content: flex-start;
     padding: $spacing-md 0;
     border-bottom: 1px solid $kanpo-sand;
-  }
-
-  &__row-text {
-    flex: 1 1 0;
   }
 }

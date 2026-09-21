@@ -31,7 +31,7 @@ export const MATCH_QUERY_KEYS = {
 }
 
 // Selects de Supabase. Deben ser literales para que el cliente tipado infiera las filas.
-export const MATCH_LIST_SELECT = 'id, startsAt, priceAmount, occupiedSlots, venue!inner(name, zone), matchFormat!inner(name, totalSlots, durationMin)' as const
+export const MATCH_LIST_SELECT = 'id, startsAt, priceAmount, occupiedSlots, venue!inner(name, zone, city), matchFormat!inner(name, totalSlots, durationMin)' as const
 
 export const MATCH_DETAIL_SELECT = 'id, startsAt, priceAmount, occupiedSlots, rules, venue!inner(name, zone, address, city, photoUrl), matchFormat!inner(name, totalSlots, durationMin)' as const
 

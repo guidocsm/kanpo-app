@@ -14,7 +14,7 @@
   },
   "FEED": {
     "WEEK_LABEL": "Semana {{week}} · {{month}} {{year}}",
-    "GREETING": "Buen día,<br/>{{name}} — <accent>a jugar.</accent>",
+    "GREETING": "Buen día — <accent>a jugar.</accent>",
     "FILTER": "Filtrar ↗"
   },
   "MATCHES": {
@@ -24,12 +24,9 @@
       "SUMMARY_other": "{{day}} · {{count}} partidos"
     },
     "CARD": {
-      "NEXT_MATCH": "Tu próximo partido",
-      "TODAY": "Hoy",
-      "TOMORROW": "Mañana",
       "DURATION_MINUTES": "{{minutes}} min",
       "FULL": "Lleno",
-      "SPOTS": "{{enrolled}} / {{capacity}}"
+      "SPOTS": "{{occupied}} / {{total}}"
     },
     "EMPTY": {
       "TITLE": "No hay partidos programados",
@@ -44,23 +41,15 @@
     "DETAIL": {
       "LOADING_LABEL": "Cargando partido",
       "HEADER": {
-        "CODE": "Partido · #{{code}}",
         "BACK_LABEL": "Volver",
         "BOOKMARK_LABEL": "Guardar partido",
         "SHARE_LABEL": "Compartir partido"
       },
-      "VENUE_LABEL": "{{name}}, {{city}}",
+      "VENUE_LABEL": "{{zone}}, {{city}}",
       "SPECS": {
         "FORMAT": "Formato",
-        "SURFACE": "Cancha",
-        "LEVEL": "Nivel",
-        "FORMAT_VALUE": "{{format}} · {{minutes}} min"
-      },
-      "SURFACE": {
-        "SYNTHETIC": "Sintética"
-      },
-      "LEVEL": {
-        "MIXED": "Mixto"
+        "DURATION": "Duración",
+        "DURATION_VALUE": "{{minutes}} min"
       },
       "AVAILABILITY": {
         "FEW_SLOTS_BADGE_one": "¡Queda {{count}}!",
@@ -74,15 +63,7 @@
         "RULES": "Reglas"
       },
       "INFO": {
-        "ORGANIZER_ROLE_one": "Organizador · {{count}} partido",
-        "ORGANIZER_ROLE_other": "Organizador · {{count}} partidos",
-        "NOTE_LABEL": "Nota del organizador",
-        "LOCATION": "{{venue}}, {{city}} — {{field}}",
         "SCHEDULE": "{{day}} · {{timeRange}}"
-      },
-      "EMPTY_TABS": {
-        "PARTICIPANTS": "Aún no hay participantes confirmados",
-        "RULES": "El organizador todavía no publicó las reglas"
       },
       "CTA": {
         "ENROLL": "Apuntarme al partido",
@@ -92,6 +73,13 @@
         "FULL_LABEL": "Partido completo",
         "FULL_HINT": "Cupo completo",
         "WAITLIST": "Anotarme en la lista de espera →"
+      },
+      "RULES": {
+        "EMPTY": "El organizador todavía no publicó las reglas"
+      },
+      "SLOTS": {
+        "OCCUPIED": "Ocupadas",
+        "AVAILABLE": "Disponibles"
       }
     }
   }

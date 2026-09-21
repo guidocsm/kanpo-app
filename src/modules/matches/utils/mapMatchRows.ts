@@ -12,7 +12,7 @@ export function mapMatchListRow(row: MatchListRow): Match {
     totalSlots: row.matchFormat.totalSlots,
     durationMinutes: row.matchFormat.durationMin,
     format: row.matchFormat.name,
-    venue: { name: row.venue.name, zone: row.venue.zone }
+    venue: { name: row.venue.name, zone: row.venue.zone, city: row.venue.city }
   }
 }
 

@@ -11,10 +11,7 @@ export function MatchList({ matches }: MatchListProps) {
     <ul className={styles['match-list']}>
       {matches.map((match) => (
         <li key={match.id}>
-          <MatchCard
-            match={match}
-            variant={match.isUserNextMatch ? 'featured' : 'default'}
-          />
+          <MatchCard match={match} />
         </li>
       ))}
     </ul>

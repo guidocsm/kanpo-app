@@ -6,8 +6,7 @@ export const ICON_NAME = {
   ARROW_RIGHT: 'arrow-right',
   BOOKMARK: 'bookmark',
   SHARE: 'share',
-  CLOCK: 'clock',
-  STAR: 'star'
+  CLOCK: 'clock'
 } as const
 
 export type IconName = (typeof ICON_NAME)[keyof typeof ICON_NAME]
