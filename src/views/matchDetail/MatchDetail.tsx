@@ -57,14 +57,12 @@ export default function MatchDetail() {
   return (
     <main className={styles['match-detail']}>
       <MatchDetailHeader
-        code={match.code}
         onBackClick={goBack}
         onBookmarkClick={handleBookmarkClick}
         onShareClick={handleShareClick}
       />
-      <MatchHero />
+      <MatchHero photoUrl={match.venue.photoUrl} />
       <MatchTitleBlock
-        title={match.title}
         venue={match.venue}
         availability={getMatchAvailability(match)}
         remainingSlots={getRemainingSlots(match)}
@@ -73,8 +71,6 @@ export default function MatchDetail() {
         <MatchSpecs
           format={match.format}
           durationMinutes={match.durationMinutes}
-          surface={match.surface}
-          level={match.level}
         />
       </div>
       <MatchDetailTabs match={match} />
