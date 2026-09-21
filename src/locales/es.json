@@ -5,6 +5,11 @@
       "TITLE": "No encontramos esta página",
       "DESCRIPTION": "El enlace puede estar roto o el partido ya no existe.",
       "BACK_TO_FEED_BUTTON": "Ver partidos"
+    },
+    "CITIES": {
+      "CCS": "Caracas",
+      "MBO": "Maracaibo",
+      "VLC": "Valencia"
     }
   },
   "FEED": {

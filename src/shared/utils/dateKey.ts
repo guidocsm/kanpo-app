@@ -1,21 +1,38 @@
-import { addDays, format, isToday, isTomorrow, parseISO } from 'date-fns'
+import { addDays, format, isToday, isTomorrow, parse, startOfDay } from 'date-fns'
 
 import { DATE_KEY_FORMAT, RELATIVE_DAY, type RelativeDay } from '@/shared/constants/dates'
+import { APP_TZ, toAppDate, toUtcIsoString } from '@/shared/utils/appTimeZone'
 
+// Clave de día ('yyyy-MM-dd') en hora de Caracas.
 export function toDateKey(date: Date): string {
-  return format(date, DATE_KEY_FORMAT)
+  return format(toAppDate(date), DATE_KEY_FORMAT)
 }
 
+// Medianoche de Caracas del día indicado.
 export function parseDateKey(dateKey: string): Date {
-  return parseISO(dateKey)
+  return parse(dateKey, DATE_KEY_FORMAT, new Date(), { in: APP_TZ })
 }
 
 export function getWeekdayStrip(startDate: Date, daysCount: number): Date[] {
-  return Array.from({ length: daysCount }, (_, dayIndex) => addDays(startDate, dayIndex))
+  const firstDay = startOfDay(toAppDate(startDate))
+  return Array.from({ length: daysCount }, (_, dayIndex) => addDays(firstDay, dayIndex))
+}
+
+// Rango [from, before) en UTC que cubre todos los días indicados, medido en hora de Caracas.
+export function getDateKeysRange(dateKeys: string[]): { from: string; before: string } {
+  const sortedDateKeys = [...dateKeys].sort()
+  const firstDay = parseDateKey(sortedDateKeys[0])
+  const lastDay = parseDateKey(sortedDateKeys[sortedDateKeys.length - 1])
+
+  return {
+    from: toUtcIsoString(firstDay),
+    before: toUtcIsoString(addDays(lastDay, 1))
+  }
 }
 
 export function getRelativeDay(date: Date): RelativeDay | null {
-  if (isToday(date)) return RELATIVE_DAY.TODAY
-  if (isTomorrow(date)) return RELATIVE_DAY.TOMORROW
+  const appDate = toAppDate(date)
+  if (isToday(appDate)) return RELATIVE_DAY.TODAY
+  if (isTomorrow(appDate)) return RELATIVE_DAY.TOMORROW
   return null
 }

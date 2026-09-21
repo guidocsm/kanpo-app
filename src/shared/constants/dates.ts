@@ -1,3 +1,6 @@
+// Todas las fechas de la app (día seleccionado, horas de partido) se calculan en la zona horaria de Caracas.
+export const APP_TIME_ZONE = 'America/Caracas'
+
 export const DATE_KEY_FORMAT = 'yyyy-MM-dd'
 
 export const DATE_FORMAT = {
