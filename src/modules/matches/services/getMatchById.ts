@@ -1,15 +1,24 @@
-import { createMatchDetailsMock } from '@/modules/matches/mocks/matchesMock'
+import { supabase } from '@/core/http/client'
+import { MATCH_DETAIL_SELECT, MATCH_STATUS } from '@/modules/matches/constants'
 import type { MatchDetail } from '@/modules/matches/types/match'
-import { MOCK_ERROR_MESSAGE, MOCK_QUERY_PARAM } from '@/shared/constants/mock'
-import { isMockScenarioActive } from '@/shared/utils/mockScenario'
-import { simulateLatency } from '@/shared/utils/simulateLatency'
+import { mapMatchDetailRow } from '@/modules/matches/utils/mapMatchRows'
+import type { City } from '@/shared/types/city'
+import { getNowIso } from '@/shared/utils/appTimeZone'
+import { isUuid } from '@/shared/utils/isUuid'
 
-// MOCK: sustituir el cuerpo por la consulta a Supabase; la firma se mantiene.
-// Devuelve `null` si el partido no existe (404); lanza si la consulta falla (`?mock=error` en dev).
-export async function getMatchById(matchId: string): Promise<MatchDetail | null> {
-  await simulateLatency()
+interface GetMatchByIdParams {
+  matchId: string
+  city: City
+}
 
-  if (isMockScenarioActive(MOCK_QUERY_PARAM.ERROR)) throw new Error(MOCK_ERROR_MESSAGE)
+// Devuelve `null` si el partido no existe, no está abierto, ya empezó o es de otra ciudad (la pantalla muestra 404).
+// Un id que no es uuid también es `null`: Postgres lo rechazaría con un error 400 en vez de "no encontrado".
+export async function getMatchById({ matchId, city }: GetMatchByIdParams): Promise<MatchDetail | null> {
+  if (!isUuid(matchId)) return null
 
-  return createMatchDetailsMock(new Date()).find((matchDetail) => matchDetail.id === matchId) ?? null
+  const { data, error } = await supabase.from('match').select(MATCH_DETAIL_SELECT).eq('id', matchId).eq('status', MATCH_STATUS.OPEN).eq('venue.city', city).gt('startsAt', getNowIso()).maybeSingle()
+
+  if (error) throw error
+
+  return data ? mapMatchDetailRow(data) : null
 }

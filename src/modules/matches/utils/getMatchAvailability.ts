@@ -1,10 +1,10 @@
 import { FEW_SLOTS_THRESHOLD, MATCH_AVAILABILITY } from '@/modules/matches/constants'
 import type { Match, MatchAvailability } from '@/modules/matches/types/match'
 
-type MatchSlots = Pick<Match, 'capacity' | 'enrolledCount'>
+type MatchSlots = Pick<Match, 'totalSlots' | 'occupiedSlots'>
 
-export function getRemainingSlots({ capacity, enrolledCount }: MatchSlots): number {
-  return Math.max(capacity - enrolledCount, 0)
+export function getRemainingSlots({ totalSlots, occupiedSlots }: MatchSlots): number {
+  return Math.max(totalSlots - occupiedSlots, 0)
 }
 
 export function getMatchAvailability(match: MatchSlots): MatchAvailability {

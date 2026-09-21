@@ -1,15 +1,30 @@
-import { parseISO } from 'date-fns'
-
-import { createMatchesMock } from '@/modules/matches/mocks/matchesMock'
+import { supabase } from '@/core/http/client'
+import { MATCH_LIST_SELECT, MATCH_STATUS } from '@/modules/matches/constants'
 import type { Match } from '@/modules/matches/types/match'
-import { toDateKey } from '@/shared/utils/dateKey'
-import { simulateLatency } from '@/shared/utils/simulateLatency'
+import { mapMatchListRow } from '@/modules/matches/utils/mapMatchRows'
+import type { City } from '@/shared/types/city'
+import { clampToNowIso } from '@/shared/utils/appTimeZone'
+import { getDateKeysRange } from '@/shared/utils/dateKey'
 
-// MOCK: sustituir el cuerpo por la consulta a Supabase; la firma se mantiene.
-export async function getMatchesByDate(dateKey: string): Promise<Match[]> {
-  await simulateLatency()
+interface GetMatchesByDateParams {
+  dateKey: string
+  city: City
+}
 
-  return createMatchesMock(new Date())
-    .filter((match) => toDateKey(parseISO(match.startsAt)) === dateKey)
-    .sort((firstMatch, secondMatch) => firstMatch.startsAt.localeCompare(secondMatch.startsAt))
+// Partidos abiertos del día (hora de Caracas) que aún no han empezado, de la ciudad indicada.
+export async function getMatchesByDate({ dateKey, city }: GetMatchesByDateParams): Promise<Match[]> {
+  const { from, before } = getDateKeysRange([dateKey])
+
+  const { data, error } = await supabase
+    .from('match')
+    .select(MATCH_LIST_SELECT)
+    .eq('status', MATCH_STATUS.OPEN)
+    .eq('venue.city', city)
+    .gte('startsAt', clampToNowIso(from))
+    .lt('startsAt', before)
+    .order('startsAt', { ascending: true })
+
+  if (error) throw error
+
+  return data.map(mapMatchListRow)
 }

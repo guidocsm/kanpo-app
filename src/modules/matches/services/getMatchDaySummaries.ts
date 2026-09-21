@@ -1,18 +1,36 @@
-import { parseISO } from 'date-fns'
-
-import { createMatchesMock } from '@/modules/matches/mocks/matchesMock'
+import { supabase } from '@/core/http/client'
+import { MATCH_DAY_SUMMARY_SELECT, MATCH_STATUS } from '@/modules/matches/constants'
 import type { MatchDaySummary } from '@/modules/matches/types/match'
-import { toDateKey } from '@/shared/utils/dateKey'
-import { simulateLatency } from '@/shared/utils/simulateLatency'
+import type { City } from '@/shared/types/city'
+import { clampToNowIso } from '@/shared/utils/appTimeZone'
+import { getDateKeysRange, toDateKey } from '@/shared/utils/dateKey'
 
-// MOCK: sustituir el cuerpo por la consulta a Supabase; la firma se mantiene.
-export async function getMatchDaySummaries(dateKeys: string[]): Promise<MatchDaySummary[]> {
-  await simulateLatency()
+interface GetMatchDaySummariesParams {
+  dateKeys: string[]
+  city: City
+}
 
-  const matches = createMatchesMock(new Date())
+// Cuántos partidos abiertos (aún no iniciados) hay en cada día: alimenta los puntos del selector de días.
+export async function getMatchDaySummaries({ dateKeys, city }: GetMatchDaySummariesParams): Promise<MatchDaySummary[]> {
+  if (dateKeys.length === 0) return []
 
-  return dateKeys.map((dateKey) => ({
-    dateKey,
-    matchCount: matches.filter((match) => toDateKey(parseISO(match.startsAt)) === dateKey).length
-  }))
+  const { from, before } = getDateKeysRange(dateKeys)
+
+  const { data, error } = await supabase
+    .from('match')
+    .select(MATCH_DAY_SUMMARY_SELECT)
+    .eq('status', MATCH_STATUS.OPEN)
+    .eq('venue.city', city)
+    .gte('startsAt', clampToNowIso(from))
+    .lt('startsAt', before)
+
+  if (error) throw error
+
+  const matchCountByDateKey = new Map<string, number>()
+  data.forEach((row) => {
+    const dateKey = toDateKey(new Date(row.startsAt))
+    matchCountByDateKey.set(dateKey, (matchCountByDateKey.get(dateKey) ?? 0) + 1)
+  })
+
+  return dateKeys.map((dateKey) => ({ dateKey, matchCount: matchCountByDateKey.get(dateKey) ?? 0 }))
 }

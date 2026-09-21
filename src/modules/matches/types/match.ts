@@ -1,41 +1,37 @@
-import type { MATCH_AVAILABILITY, MATCH_FORMAT, MATCH_LEVEL, MATCH_SURFACE } from '@/modules/matches/constants'
+import type { MATCH_AVAILABILITY } from '@/modules/matches/constants'
+import type { Tables } from '@/shared/types/database'
 
-export type MatchFormat = (typeof MATCH_FORMAT)[keyof typeof MATCH_FORMAT]
-export type MatchSurface = (typeof MATCH_SURFACE)[keyof typeof MATCH_SURFACE]
-export type MatchLevel = (typeof MATCH_LEVEL)[keyof typeof MATCH_LEVEL]
+type MatchRow = Tables<'match'>
+type VenueRow = Tables<'venue'>
+type MatchFormatRow = Tables<'matchFormat'>
+
 export type MatchAvailability = (typeof MATCH_AVAILABILITY)[keyof typeof MATCH_AVAILABILITY]
 
 export interface Venue {
-  name: string
-  city: string
+  name: VenueRow['name']
+  zone: VenueRow['zone']
 }
 
-export interface Organizer {
-  fullName: string
-  organizedMatchesCount: number
-  rating: number
+export interface VenueDetail extends Venue {
+  address: VenueRow['address']
+  city: VenueRow['city']
+  photoUrl: VenueRow['photoUrl']
 }
 
 export interface Match {
-  id: string
-  title: string
+  id: MatchRow['id']
+  startsAt: MatchRow['startsAt']
+  priceUsd: MatchRow['priceAmount']
+  occupiedSlots: MatchRow['occupiedSlots']
+  totalSlots: MatchFormatRow['totalSlots']
+  durationMinutes: MatchFormatRow['durationMin']
+  format: MatchFormatRow['name']
   venue: Venue
-  startsAt: string
-  durationMinutes: number
-  format: MatchFormat
-  enrolledCount: number
-  capacity: number
-  priceUsd: number
-  isUserNextMatch: boolean
 }
 
 export interface MatchDetail extends Match {
-  code: string
-  fieldName: string
-  surface: MatchSurface
-  level: MatchLevel
-  organizer: Organizer
-  organizerNote?: string
+  venue: VenueDetail
+  rules: MatchRow['rules']
 }
 
 export interface MatchDaySummary {

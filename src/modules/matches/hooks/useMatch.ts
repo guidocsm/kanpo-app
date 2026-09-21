@@ -2,11 +2,14 @@ import { useQuery } from '@tanstack/react-query'
 
 import { MATCH_QUERY_KEYS } from '@/modules/matches/constants'
 import { getMatchById } from '@/modules/matches/services/getMatchById'
+import { DEFAULT_CITY } from '@/shared/constants/cities'
 
 export function useMatch(matchId: string | undefined) {
+  const city = DEFAULT_CITY
+
   return useQuery({
-    queryKey: MATCH_QUERY_KEYS.byId(matchId ?? ''),
-    queryFn: () => getMatchById(matchId ?? ''),
+    queryKey: MATCH_QUERY_KEYS.byId(city, matchId ?? ''),
+    queryFn: () => getMatchById({ matchId: matchId ?? '', city }),
     enabled: Boolean(matchId)
   })
 }

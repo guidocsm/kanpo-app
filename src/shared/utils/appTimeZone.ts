@@ -15,8 +15,12 @@ export function toUtcIsoString(date: Date): string {
   return new Date(date.getTime()).toISOString()
 }
 
+export function getNowIso(): string {
+  return new Date().toISOString()
+}
+
 // Devuelve el más tardío entre `isoDate` y el instante actual: sirve para ocultar partidos que ya empezaron.
 export function clampToNowIso(isoDate: string): string {
-  const nowIso = new Date().toISOString()
+  const nowIso = getNowIso()
   return isoDate > nowIso ? isoDate : nowIso
 }
