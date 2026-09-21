@@ -15,6 +15,8 @@ interface GetMatchesByDateParams {
 export async function getMatchesByDate({ dateKey, city }: GetMatchesByDateParams): Promise<Match[]> {
   const { from, before } = getDateKeysRange([dateKey])
 
+  // Sin reintento propio de postgrest-js: ya reintenta React Query una vez (core/plugins/query.ts) y sumar ambos
+  // dejaba el skeleton 12-20 s antes de mostrar el error.
   const { data, error } = await supabase
     .from('match')
     .select(MATCH_LIST_SELECT)
@@ -23,6 +25,7 @@ export async function getMatchesByDate({ dateKey, city }: GetMatchesByDateParams
     .gte('startsAt', clampToNowIso(from))
     .lt('startsAt', before)
     .order('startsAt', { ascending: true })
+    .retry(false)
 
   if (error) throw error
 

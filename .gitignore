@@ -27,3 +27,6 @@ dist-ssr
 .env.example
 VITE_SUPABASE_URL=
 VITE_SUPABASE_ANON_KEY=
+
+# Supabase CLI
+supabase/.temp/

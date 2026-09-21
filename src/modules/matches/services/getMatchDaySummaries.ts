@@ -16,6 +16,8 @@ export async function getMatchDaySummaries({ dateKeys, city }: GetMatchDaySummar
 
   const { from, before } = getDateKeysRange(dateKeys)
 
+  // Sin reintento propio de postgrest-js: ya reintenta React Query una vez (core/plugins/query.ts) y sumar ambos
+  // dejaba el skeleton 12-20 s antes de mostrar el error.
   const { data, error } = await supabase
     .from('match')
     .select(MATCH_DAY_SUMMARY_SELECT)
@@ -23,6 +25,7 @@ export async function getMatchDaySummaries({ dateKeys, city }: GetMatchDaySummar
     .eq('venue.city', city)
     .gte('startsAt', clampToNowIso(from))
     .lt('startsAt', before)
+    .retry(false)
 
   if (error) throw error
 

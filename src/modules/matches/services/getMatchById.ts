@@ -16,7 +16,17 @@ interface GetMatchByIdParams {
 export async function getMatchById({ matchId, city }: GetMatchByIdParams): Promise<MatchDetail | null> {
   if (!isUuid(matchId)) return null
 
-  const { data, error } = await supabase.from('match').select(MATCH_DETAIL_SELECT).eq('id', matchId).eq('status', MATCH_STATUS.OPEN).eq('venue.city', city).gt('startsAt', getNowIso()).maybeSingle()
+  // Sin reintento propio de postgrest-js: ya reintenta React Query una vez (core/plugins/query.ts) y sumar ambos
+  // dejaba el skeleton 12-20 s antes de mostrar el error.
+  const { data, error } = await supabase
+    .from('match')
+    .select(MATCH_DETAIL_SELECT)
+    .eq('id', matchId)
+    .eq('status', MATCH_STATUS.OPEN)
+    .eq('venue.city', city)
+    .gt('startsAt', getNowIso())
+    .maybeSingle()
+    .retry(false)
 
   if (error) throw error
 
